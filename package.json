@@ -1,0 +1,9 @@
+{
+  "name": "craftnepal-bot",
+  "version": "3.0",
+  "description": "CraftNepal Bot re-done using ts",
+  "main": "./build/index.js",
+  "repository": "https://github.com/Gvranjit/craftnepal-bot.git",
+  "author": "Gaurav Ranjit",
+  "license": "MIT"
+}
