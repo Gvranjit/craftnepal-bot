@@ -1,9 +1,12 @@
 import { Client } from 'discord.js';
-import { env } from './dotenv';
+import { env } from '../dotenv';
 
 const client = new Client({ intents: 'Guilds' });
-client.once('ready', () => {
+
+client.user?.setStatus('dnd');
+client.once('ready', (bot) => {
   console.log('Ready!');
+  bot.user.setPresence({ status: 'dnd' });
 });
 
 client.on('interactionCreate', async (interaction) => {
@@ -21,7 +24,14 @@ client.on('interactionCreate', async (interaction) => {
     await interaction.reply(`Server name ${interaction.guild?.name}`);
   }
 });
+function initializeDiscordBot() {
+  client
+    .login(env.BOT_TOKEN)
+    .then((res) => {
+      console.log('successfully Logged in', res);
+    })
+    .catch((err) => console.error(err))
+    .finally();
+}
 
-client.login(env.BOT_TOKEN);
-
-console.log('IT WORKSS');
+export { initializeDiscordBot };
