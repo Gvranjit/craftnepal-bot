@@ -25,7 +25,7 @@
       "*": ["node_modules/*", "server/types/*"]
     }
   },
-  "ts-node": { "swc": true },
+
   "include": ["src/**/*"],
   "exclude": [".templates", "**/__tests__/**/*", "**/__mocks__/**/*", "**/tests/**/*"]
 }

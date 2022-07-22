@@ -1,11 +1,315 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model Players {
+  Nick String @id @db.VarChar(16)
+  Skin String @db.VarChar(16)
+}
+
+model Skins {
+  Nick      String  @id @db.VarChar(16)
+  Value     String? @db.Text
+  Signature String? @db.Text
+  timestamp String? @db.Text
+}
+
+model statz_arrows_shot {
+  id    BigInt @id @default(autoincrement())
+  uuid  String @db.VarChar(100)
+  value BigInt
+  world String @db.VarChar(100)
+
+  @@unique([uuid, world], map: "uuid")
+}
+
+model statz_blocks_broken {
+  id    BigInt @id @default(autoincrement())
+  uuid  String @db.VarChar(100)
+  value BigInt
+  world String @db.VarChar(100)
+  block String @db.VarChar(100)
+
+  @@unique([uuid, block, world], map: "uuid")
+}
+
+model statz_blocks_placed {
+  id    BigInt @id @default(autoincrement())
+  uuid  String @db.VarChar(100)
+  value BigInt
+  world String @db.VarChar(100)
+  block String @db.VarChar(100)
+
+  @@unique([uuid, block, world], map: "uuid")
+}
+
+model statz_buckets_emptied {
+  id    BigInt @id @default(autoincrement())
+  uuid  String @db.VarChar(100)
+  value BigInt
+  world String @db.VarChar(100)
+
+  @@unique([uuid, world], map: "uuid")
+}
+
+model statz_buckets_filled {
+  id    BigInt @id @default(autoincrement())
+  uuid  String @db.VarChar(100)
+  value BigInt
+  world String @db.VarChar(100)
+
+  @@unique([uuid, world], map: "uuid")
+}
+
+model statz_commands_performed {
+  id        BigInt @id @default(autoincrement())
+  uuid      String @db.VarChar(100)
+  value     BigInt
+  world     String @db.VarChar(100)
+  command   String @db.VarChar(100)
+  arguments String @db.VarChar(100)
+
+  @@unique([uuid, world, command, arguments], map: "uuid")
+}
+
+model statz_damage_taken {
+  id    BigInt @id @default(autoincrement())
+  uuid  String @db.VarChar(100)
+  value BigInt
+  world String @db.VarChar(100)
+  cause String @db.VarChar(100)
+
+  @@unique([uuid, cause, world], map: "uuid")
+}
+
+model statz_deaths {
+  id    BigInt @id @default(autoincrement())
+  uuid  String @db.VarChar(100)
+  value BigInt
+  world String @db.VarChar(100)
+
+  @@unique([uuid, world], map: "uuid")
+}
+
+model statz_distance_travelled {
+  id       BigInt  @id @default(autoincrement())
+  uuid     String  @db.VarChar(100)
+  value    Decimal @db.Decimal(20, 10)
+  world    String  @db.VarChar(100)
+  moveType String  @db.VarChar(100)
+
+  @@unique([uuid, moveType, world], map: "uuid")
+}
+
+model statz_eggs_thrown {
+  id    BigInt @id @default(autoincrement())
+  uuid  String @db.VarChar(100)
+  value BigInt
+  world String @db.VarChar(100)
+
+  @@unique([uuid, world], map: "uuid")
+}
+
+model statz_entered_beds {
+  id    BigInt @id @default(autoincrement())
+  uuid  String @db.VarChar(100)
+  value BigInt
+  world String @db.VarChar(100)
+
+  @@unique([uuid, world], map: "uuid")
+}
+
+model statz_food_eaten {
+  id        BigInt @id @default(autoincrement())
+  uuid      String @db.VarChar(100)
+  value     BigInt
+  world     String @db.VarChar(100)
+  foodEaten String @db.VarChar(100)
+
+  @@unique([uuid, foodEaten, world], map: "uuid")
+}
+
+model statz_items_caught {
+  id     BigInt @id @default(autoincrement())
+  uuid   String @db.VarChar(100)
+  value  BigInt
+  caught String @db.VarChar(100)
+  world  String @db.VarChar(100)
+
+  @@unique([uuid, world, caught], map: "uuid")
+}
+
+model statz_items_crafted {
+  id    BigInt @id @default(autoincrement())
+  uuid  String @db.VarChar(100)
+  value BigInt
+  world String @db.VarChar(100)
+  item  String @db.VarChar(100)
+
+  @@unique([uuid, item, world], map: "uuid")
+}
+
+model statz_items_dropped {
+  id    BigInt @id @default(autoincrement())
+  uuid  String @db.VarChar(100)
+  value BigInt
+  world String @db.VarChar(100)
+  item  String @db.VarChar(100)
+
+  @@unique([uuid, world, item], map: "uuid")
+}
+
+model statz_items_picked_up {
+  id    BigInt @id @default(autoincrement())
+  uuid  String @db.VarChar(100)
+  value BigInt
+  world String @db.VarChar(100)
+  item  String @db.VarChar(100)
+
+  @@unique([uuid, world, item], map: "uuid")
+}
+
+model statz_joins {
+  id    BigInt @id @default(autoincrement())
+  uuid  String @unique(map: "uuid") @db.VarChar(100)
+  value BigInt
+}
+
+model statz_kills_mobs {
+  id     BigInt @id @default(autoincrement())
+  uuid   String @db.VarChar(100)
+  value  BigInt
+  world  String @db.VarChar(100)
+  mob    String @db.VarChar(100)
+  weapon String @db.VarChar(100)
+
+  @@unique([uuid, mob, world, weapon], map: "uuid")
+}
+
+model statz_kills_players {
+  id           BigInt @id @default(autoincrement())
+  uuid         String @db.VarChar(100)
+  value        BigInt
+  world        String @db.VarChar(100)
+  playerKilled String @db.VarChar(100)
+
+  @@unique([uuid, playerKilled, world], map: "uuid")
+}
+
+model statz_players {
+  id         BigInt @id @default(autoincrement())
+  uuid       String @unique(map: "uuid") @db.VarChar(100)
+  playerName String @db.VarChar(100)
+}
+
+model statz_teleports {
+  id        BigInt @id @default(autoincrement())
+  uuid      String @db.VarChar(100)
+  value     BigInt
+  world     String @db.VarChar(100)
+  destWorld String @db.VarChar(100)
+  cause     String @db.VarChar(100)
+
+  @@unique([uuid, world, destWorld, cause], map: "uuid")
+}
+
+model statz_time_played {
+  id    BigInt @id @default(autoincrement())
+  uuid  String @db.VarChar(100)
+  value BigInt
+  world String @db.VarChar(100)
+
+  @@unique([uuid, world], map: "uuid")
+}
+
+model statz_times_kicked {
+  id     BigInt @id @default(autoincrement())
+  uuid   String @db.VarChar(100)
+  value  BigInt
+  world  String @db.VarChar(100)
+  reason String @db.VarChar(100)
+
+  @@unique([uuid, world, reason], map: "uuid")
+}
+
+model statz_times_shorn {
+  id    BigInt @id @default(autoincrement())
+  uuid  String @db.VarChar(100)
+  value BigInt
+  world String @db.VarChar(100)
+
+  @@unique([uuid, world], map: "uuid")
+}
+
+model statz_tools_broken {
+  id    BigInt @id @default(autoincrement())
+  uuid  String @db.VarChar(100)
+  value BigInt
+  world String @db.VarChar(100)
+  item  String @db.VarChar(100)
+
+  @@unique([uuid, world, item], map: "uuid")
+}
+
+model statz_villager_trades {
+  id    BigInt @id @default(autoincrement())
+  uuid  String @db.VarChar(100)
+  value BigInt
+  world String @db.VarChar(100)
+  trade String @db.VarChar(100)
+
+  @@unique([uuid, world, trade], map: "uuid")
+}
+
+model statz_votes {
+  id    BigInt @id @default(autoincrement())
+  uuid  String @unique(map: "uuid") @db.VarChar(100)
+  value BigInt
+}
+
+model statz_worlds_changed {
+  id        BigInt @id @default(autoincrement())
+  uuid      String @db.VarChar(100)
+  value     BigInt
+  world     String @db.VarChar(100)
+  destWorld String @db.VarChar(100)
+
+  @@unique([uuid, world, destWorld], map: "uuid")
+}
+
+model statz_xp_gained {
+  id    BigInt @id @default(autoincrement())
+  uuid  String @db.VarChar(100)
+  value BigInt
+  world String @db.VarChar(100)
+
+  @@unique([uuid, world], map: "uuid")
+}
+
+model tickets {
+  id         String    @id @db.VarChar(255)
+  isResolved Boolean?  @default(false)
+  subject    String    @db.VarChar(255)
+  log        String?   @db.VarChar(255)
+  resolvedAt DateTime? @db.DateTime(0)
+  createdAt  DateTime  @db.DateTime(0)
+  updatedAt  DateTime  @db.DateTime(0)
+  userId     String?   @db.VarChar(255)
+  users      users?    @relation(fields: [userId], references: [id], map: "tickets_ibfk_1")
+
+  @@index([userId], map: "userId")
+}
+
+model users {
+  id            String    @id @db.VarChar(255)
+  hasTicket     Boolean?  @default(false)
+  hasViolations Boolean?  @default(false)
+  createdAt     DateTime  @db.DateTime(0)
+  updatedAt     DateTime  @db.DateTime(0)
+  tickets       tickets[]
 }

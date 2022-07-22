@@ -9,12 +9,16 @@
   "scripts": {
     "build": "swc ./src -d ./build",
     "typecheck": "tsc --noEmit",
-    "dev": "ts-node ./src/index",
-    "fast-dev": "npm run build && nodemon build/index",
+    "dev": "tsnd --respawn ./src/index",
+    "fastDev": "concurrently \"swc -w ./src/ -d ./fast-build/\" \"npm run build && nodemon fast-build/index\"",
     "serve": "pm2 start ./build/index.js --name='craftnepal-bot'"
   },
   "dependencies": {
+    "@discordjs/builders": "^1.0.0",
+    "@discordjs/rest": "^1.0.0",
+    "@prisma/client": "^4.1.0",
     "concurrently": "^7.3.0",
+    "discord-api-types": "^0.36.2",
     "discord.js": "^14.0.2",
     "dotenv": "^16.0.1",
     "dotenv-cli": "^6.0.0",
