@@ -1,9 +1,13 @@
 import express from 'express';
 import next from 'next';
+import { initializeDiscordBot } from './startup/startup.discord-bot';
 import { env } from './dotenv';
 
 const dev = process.env.NODE_ENV !== 'production';
 const hostname = 'localhost';
+
+//starup discord
+initializeDiscordBot();
 
 // when using middleware `hostname` and `port` must be provided below
 const nextApp = next({ dev, hostname, port: env.PORT });
