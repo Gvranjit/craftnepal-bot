@@ -11,6 +11,7 @@ const envSchema = Joi.object<Env>({
   BOT_TOKEN: Joi.string().required(),
   CLIENT_ID: Joi.number().unsafe(),
   GUILD_ID: Joi.number().unsafe(),
+  PORT: Joi.number().required(),
 });
 
 const validation = envSchema.validate(env, { abortEarly: false, allowUnknown: true });
