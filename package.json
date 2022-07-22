@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "tsnd --respawn ./server/",
     "build:next": "next build",
-    "build:server": "npm run clean && tsc --project tsconfig.server.json",
+    "build:server": "npm run clean && swc ./server -d ./build",
     "build": "concurrently \"npm run build:server\" \"npm run build:next\"",
     "clean": "rimraf build",
     "start": "dotenv -v NODE_ENV=production node build/index.js",
