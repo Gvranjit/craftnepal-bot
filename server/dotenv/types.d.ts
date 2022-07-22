@@ -4,5 +4,6 @@ export interface Env {
   BOT_TOKEN: string;
   CLIENT_ID: string;
   GUILD_ID: string;
+  PORT: number;
   [key: string]: string | number;
 }

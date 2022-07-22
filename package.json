@@ -7,13 +7,20 @@
   "author": "Gaurav Ranjit",
   "license": "MIT",
   "scripts": {
-    "build": "swc ./src -d ./build",
-    "typecheck": "tsc --noEmit",
-    "dev": "tsnd --respawn ./src/index",
-    "fastDev": "concurrently \"swc -w ./src/ -d ./fast-build/\" \"npm run build && nodemon fast-build/index\"",
-    "serve": "pm2 start ./build/index.js --name='craftnepal-bot'"
+    "dev": "tsnd --respawn ./server/",
+    "build:next": "next build",
+    "build:server": "npm run clean && tsc --project tsconfig.server.json",
+    "build": "concurrently \"npm run build:server\" \"npm run build:next\"",
+    "clean": "rimraf build",
+    "start": "dotenv -v NODE_ENV=production node build/index.js",
+    "lint": "next lint"
   },
   "dependencies": {
+    "@types/express": "^4.17.13",
+    "express": "^4.18.1",
+    "next": "12.2.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "@discordjs/builders": "^1.0.0",
     "@discordjs/rest": "^1.0.0",
     "@prisma/client": "^4.1.0",
@@ -34,6 +41,10 @@
     "nodemon": "^2.0.19",
     "prisma": "^4.1.0",
     "ts-node": "^10.9.1",
-    "ts-node-dev": "^2.0.0"
+    "ts-node-dev": "^2.0.0",
+    "@types/react": "18.0.15",
+    "@types/react-dom": "18.0.6",
+    "eslint": "8.20.0",
+    "eslint-config-next": "12.2.3"
   }
 }
