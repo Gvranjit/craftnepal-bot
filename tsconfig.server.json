@@ -21,11 +21,12 @@
     "outDir": "build",
     "lib": ["esnext"],
     "baseUrl": ".",
+    "isolatedModules": true,
     "paths": {
       "*": ["node_modules/*", "server/types/*"]
     }
   },
 
-  "include": ["src/**/*"],
+  "include": ["server/**/*"],
   "exclude": [".templates", "**/__tests__/**/*", "**/__mocks__/**/*", "**/tests/**/*"]
 }
