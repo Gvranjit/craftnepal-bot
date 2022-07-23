@@ -3,10 +3,9 @@ import { env } from '../dotenv';
 
 const client = new Client({ intents: 'Guilds' });
 
-client.user?.setStatus('dnd');
 client.once('ready', (bot) => {
   console.log('Ready!');
-  bot.user.setPresence({ status: 'dnd' });
+  bot.user.setPresence({ status: 'idle' });
 });
 
 client.on('interactionCreate', async (interaction) => {
