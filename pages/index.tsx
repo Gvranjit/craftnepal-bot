@@ -7,7 +7,6 @@ import styles from '../styles/Home.module.css';
 const Home: NextPage = () => {
   return (
     <>
-      <Navigationbar title="Settings" />
       <div className="h-14 w-full"></div>
       <div className="h-screen">THIS IS HOME</div>
     </>
