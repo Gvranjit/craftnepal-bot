@@ -5,3 +5,8 @@
 body {
   background-color: rgb(251, 223, 223);
 }
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../assets/fonts//Montserrat-Regular.ttf');
+}
