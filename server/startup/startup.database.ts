@@ -2,7 +2,12 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function initializeDatabase() {
-  const player = await prisma.players.findFirst();
-  console.log(player);
+  try {
+    const player = await prisma.players.findFirst();
+    console.log(player);
+  } catch (error) {
+    console.log(error);
+  }
 }
-initializeDatabase();
+
+export { initializeDatabase };
