@@ -16,14 +16,11 @@ const nextApp = next({ dev, hostname, port: env.PORT });
 const handle = nextApp.getRequestHandler();
 const expressApp = express();
 nextApp.prepare().then(() => {
-  console.log('it works again');
-
   expressApp.use('/api', (req, res, next) => {
     res.send('THIS IS ROOT API');
   });
 
   expressApp.get('*', async (req, res, next) => {
-    console.log(req.url);
     await handle(req, res, req.originalUrl as any);
   });
 });
