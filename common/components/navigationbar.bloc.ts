@@ -8,7 +8,6 @@ const useNavigationBar = () => {
 
   //handlers
   function onThemeSwitchHandler() {
-    console.log('THEME');
     setTheme(theme == 'dark' ? 'light' : 'dark');
   }
   return { onThemeSwitchHandler, theme };

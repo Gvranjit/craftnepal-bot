@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React, { useEffect } from 'react';
-import CnLogo from '../../assets/cnlogo.png';
+import CnLogo from '../../assets/cnlogo2.png';
 import { FaMoon as DarkIcon, FaSun as LightIcon } from 'react-icons/fa';
 import { useNavigationBar } from './navigationbar.bloc';
 type NavigationBarProps = { title?: string };
@@ -14,8 +14,8 @@ const NavigationBar = (props: NavigationBarProps) => {
       id="main-box"
     >
       <div className="h-full align-middle">
-        <div className="float-left h-14 w-14 ">
-          <Image src={CnLogo} height="100%" width="100%" alt="CraftNepal Logo" />
+        <div className="float-left h-14 w-14 p-2 ">
+          <Image src={CnLogo} alt="CraftNepal Logo" />
         </div>
         <div className="float-left grid h-full place-content-center w-fit font-bold ">
           CraftNepal Bot
