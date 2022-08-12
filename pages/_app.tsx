@@ -1,6 +1,6 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import Navigationbar from '../common/components/Navigationbar';
+import Navigationbar from '../common/components/navigationbar/Navigationbar';
 import { LayoutProvider, useLayoutContext } from '../context/LayoutContext';
 
 function MyApp({ Component, pageProps, inProp }: AppProps & { inProp: any }) {

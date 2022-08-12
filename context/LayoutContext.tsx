@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import {} from 'react-dom';
 import { createContext, FunctionComponent, ReactNode, useContext, useState } from 'react';
 import { useErrorHandler } from '../common/hooks/error-handler';
-import { clear } from 'console';
+import { StorageKey } from '../common/enums';
 export type Theme = 'light' | 'dark';
 
 const LayoutContext = createContext<{ theme: Theme; setTheme: any }>({} as any);
@@ -15,7 +15,7 @@ const LayoutProvider = (props: Props) => {
   const { handleError } = useErrorHandler();
   const [theme, setTheme] = useState<Theme>('dark');
   useEffect(() => {
-    const themeData = window.localStorage.getItem('theme') as Theme;
+    const themeData = window.localStorage.getItem(StorageKey.THEME) as Theme;
 
     if (themeData) {
       try {

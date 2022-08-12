@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "dev:web": "ts-node ./server/ && open-cli http://localhost:5000/",
-    "dev:server": "tsnd --respawn ./server/",
+    "dev": "tsnd --respawn ./server/",
     "build:next": "next build",
     "build:server": "npm run clean && swc ./server -d ./build",
     "build": "concurrently \"npm run build:server\" \"npm run build:next\"",

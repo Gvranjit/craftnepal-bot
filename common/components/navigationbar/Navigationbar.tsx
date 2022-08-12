@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React, { useEffect } from 'react';
-import CnLogo from '../../assets/cnlogo2.png';
+import CnLogo from '../../../assets/cnlogo2.png';
 import { FaMoon as DarkIcon, FaSun as LightIcon } from 'react-icons/fa';
 import { useNavigationBar } from './navigationbar.bloc';
 type NavigationBarProps = { title?: string };
