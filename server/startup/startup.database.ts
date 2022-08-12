@@ -4,9 +4,9 @@ const prisma = new PrismaClient();
 async function initializeDatabase() {
   try {
     const player = await prisma.players.findFirst();
-    console.log(player);
+    console.info(player);
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 }
 

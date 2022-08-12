@@ -4,13 +4,13 @@ import { env } from '../dotenv';
 const client = new Client({ intents: 'Guilds' });
 
 client.once('ready', (bot) => {
-  console.log('Ready!');
+  console.info('Ready!');
   bot.user.setPresence({ status: 'idle' });
 });
 
 client.on('interactionCreate', async (interaction) => {
   if (!interaction.isChatInputCommand()) return;
-  console.log(interaction.options.getSubcommand());
+  console.info(interaction.options.getSubcommand());
   const { options, commandName } = interaction;
 
   if (commandName === 'ping') {
@@ -27,7 +27,7 @@ function initializeDiscordBot() {
   client
     .login(env.BOT_TOKEN)
     .then((res) => {
-      console.log('successfully Logged in', res);
+      console.info('successfully Logged in', res);
     })
     .catch((err) => console.error(err))
     .finally();

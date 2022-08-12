@@ -16,7 +16,7 @@ const envSchema = Joi.object<Env>({
 
 const validation = envSchema.validate(env, { abortEarly: false, allowUnknown: true });
 if (validation.error) {
-  console.log(
+  console.error(
     validation.error.details.map((eachError) => ({
       message: eachError.message,
       provided: eachError.context?.value,
